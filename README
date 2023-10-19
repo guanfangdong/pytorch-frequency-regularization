@@ -1,0 +1,7 @@
+This document demonstrates our research paper, "Frequency Regularization: Reducing Information Redundancy in Convolutional Neural Networks," submitted with PaperID 1077 to the ACM International Conference on Multimedia 2023.
+
+In the paper, we proposed a novel technique called "frequency regularization," which uses 759 non-zero parameters to represent a UNet model with 31M parameters. The network achieves over 97% dice score on the Carvana Image Masking Challenge dataset(https://www.kaggle.com/c/carvana-image-masking-challenge). The UNet model's original size is 366MB, but applying our frequency regularization reduces it to 40kb in the unet_fr.pt file provided in this demo.
+
+To run the demo, execute the "bash run.sh" command. Note that comments have been removed following the double-blind policy.
+
+To load testing images, you may need to install the imageio package. You can find installation instructions at https://imageio.readthedocs.io/en/v2.8.0/installation.html.
