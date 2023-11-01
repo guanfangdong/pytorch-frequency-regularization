@@ -1,6 +1,6 @@
 # Frequency Regularization: Reducing Information Redundancy in Convolutional Neural Networks
 
-In this repository, we introduce a cutting-edge technique termed "Frequency Regularization" that remarkably compresses a UNet model from 31 million parameters down to a mere 759 non-zero parameters without compromising on performance. This technique has been meticulously tailored and evaluated, achieving an impressive Dice Score of over 97% on the [Carvana Image Masking Challenge dataset](https://www.kaggle.com/c/carvana-image-masking-challenge). The original UNet model has a size of 366MB, but with our frequency regularization applied, the size is drastically reduced to 4KB, as demonstrated in the `unet_fr.pt` file included in this demo.
+In this repository, we introduce a cutting-edge technique termed "Frequency Regularization" that remarkably compresses a UNet model from 31 million parameters down to a mere 759 non-zero parameters without compromising on performance. This technique has been meticulously tailored and evaluated, achieving an impressive Dice Score of over 97% on the [Carvana Image Masking Challenge dataset](https://www.kaggle.com/c/carvana-image-masking-challenge). The original UNet model has a size of 366MB, but with our frequency regularization applied, the size is drastically reduced to 4KB, as demonstrated in the `unet_fr.tar.xz` file included in this demo.
 
 ## Getting Started
 
