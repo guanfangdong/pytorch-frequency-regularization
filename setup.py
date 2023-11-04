@@ -1,25 +1,20 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='frequency_regularization',
+    name='Frequency Regularization',
     version='0.1.0',
-    description='Frequency Regularization Python package',
+    description='Frequency Regularization Python Package',
     url='https://github.com/guanfangdong/pytorch-frequency-regularization',
     author='Zhao, Chenqiu and Dong, Guanfang and Zhang, Shupei and Tan, Zijie and Basu, Anup',
     # license='BSD 2-clause',
     packages=find_packages(where="src"),
+    license="Apache License 2.0"
     install_requires=['numpy',
                       'imageio',
                       'torch',
                       'matplotlib',
                       ],
     python_requires=">=3.7, <4",
-
-
-
-
-
-
 
     classifiers=[
     #     'Development Status :: 1 - Planning',
