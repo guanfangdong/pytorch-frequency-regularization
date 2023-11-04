@@ -6,7 +6,7 @@ setup(
     description='Frequency Regularization Python package',
     url='https://github.com/guanfangdong/pytorch-frequency-regularization',
     author='Zhao, Chenqiu and Dong, Guanfang and Zhang, Shupei and Tan, Zijie and Basu, Anup',
-    license='BSD 2-clause',
+    # license='BSD 2-clause',
     packages=find_packages(where="src"),
     install_requires=['numpy',
                       'imageio',
