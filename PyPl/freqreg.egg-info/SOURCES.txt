@@ -1,0 +1,10 @@
+README
+setup.py
+freqreg/__init__.py
+freqreg/_dct.py
+freqreg/_freqreg_eva.py
+freqreg.egg-info/PKG-INFO
+freqreg.egg-info/SOURCES.txt
+freqreg.egg-info/dependency_links.txt
+freqreg.egg-info/requires.txt
+freqreg.egg-info/top_level.txt

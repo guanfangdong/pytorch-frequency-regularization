@@ -1,8 +1,7 @@
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import freq_reg._freqreg_eva as fr
+import freqreg as fr
 
 
 class DoubleConv(nn.Module):
