@@ -23,24 +23,39 @@ Due to the double-blind policy, comments within the code have been omitted. Howe
 
 Feel free to reach out for any inquiries or further clarifications regarding the implementation and performance of the frequency regularization technique on the UNet model.
 
-# Current and Future Plans
+## Current and Future Plans
 
 | Milestones                  | Status        |
 |-----------------------------|---------------|
 | Initial U-net Model        | ✔️ Completed   |
 | Additional Model Releases  | 🔜 Upcoming   |
 | Example Training Code      | 🔜 Upcoming   |
-| Pip Repository Creation    | 🔜 Upcoming   |
+| Pip Repository Creation    | ✔️ Completed   |
 
 
 ## Current Progress
-As of now, we have successfully developed and validated an initial model utilizing the U-net architecture. This serves as a proof of concept demonstrating the efficacy of our Frequency Regularization technique in significantly compressing the model size while retaining a high level of performance.
+The initial model utilizing the U-net architecture has been developed and rigorously validated. This model serves as a compelling testament to the power of Frequency Regularization to markedly diminish model size without sacrificing performance integrity. 
 
 ## Upcoming Releases
-Looking ahead, we plan to release a variety of models alongside their corresponding training code to provide a more comprehensive understanding and utilization of our technique. These releases will encapsulate a broad range of architectures and datasets to demonstrate the versatility and robustness of Frequency Regularization.
+Future efforts will focus on disseminating a variety of models with accompanying training code to elucidate the breadth and potential of Frequency Regularization. These models will span multiple architectures and datasets, affirming the method's generalizability and strength.
 
 ## Pip Repository
-Furthermore, we are in the process of packaging our compression technique into a pip repository. Once completed, this will facilitate an effortless installation and integration of our Frequency Regularization technique into existing and new projects, thereby advancing the ease of deploying highly efficient and compact models in real-world scenarios.
+We have accomplished the development of a pip repository for our Frequency Regularization technique. You can now integrate Frequency Regularization into your projects by simply running `pip install frereg`. This step is instrumental in simplifying the deployment of condensed yet potent models in pragmatic applications.
+
+# Installation and Running the Demo With the Pip Repository
+
+With the newly created pip repository, installation and execution have become more streamlined. Please ensure you have completed the following steps to use the Frequency Regularization technique with your UNet models:
+
+### Installation via Pip Repository
+
+You can install the Frequency Regularization package by executing the following command in your environment:
+
+```bash
+pip install frereg
+```
+
+This command will install the necessary components to apply Frequency Regularization to your convolutional neural network models.
+
 
 # Citation
 
