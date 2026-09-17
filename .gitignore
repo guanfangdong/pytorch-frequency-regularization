@@ -1,3 +1,7 @@
 .DS_Store
 __pycache__/
 PyPl/
+*.py[cod]
+*.swp
+.pytest_cache/
+run/unet_fr.pt

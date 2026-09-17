@@ -1,65 +1,95 @@
-# Frequency Regularization: Reducing Information Redundancy in Convolutional Neural Networks
+# Frequency Regularization
 
-In this repository, we introduce a cutting-edge technique termed "Frequency Regularization" that remarkably compresses a UNet model from 31 million parameters down to a mere 759 non-zero parameters without compromising on performance. This technique has been meticulously tailored and evaluated, achieving an impressive Dice Score of over 97% on the [Carvana Image Masking Challenge dataset](https://www.kaggle.com/c/carvana-image-masking-challenge). The original UNet model has a size of 366MB, but with our frequency regularization applied, the size is drastically reduced to 4KB, as demonstrated in the `unet_fr.tar.xz` file included in this demo.
+This repository contains the reference implementation and an inference demo
+for the paper **Frequency Regularization: Reducing Information Redundancy in
+Convolutional Neural Networks**.
 
-## Getting Started
+Frequency regularization stores convolution kernels in the frequency domain
+and applies an inverse discrete cosine transform (DCT) before the usual
+PyTorch operation. In the released UNet experiment, the paper reports a
+reduction from 31M model parameters to 759 non-zero parameters while keeping
+a Dice score above 97% on the [Carvana Image Masking Challenge
+dataset](https://www.kaggle.com/c/carvana-image-masking-challenge).
 
-### Prerequisites
+## Repository layout
 
-- Ensure that you have the `imageio` package installed for loading testing images. Follow the [installation instructions](https://imageio.readthedocs.io/en/v2.8.0/installation.html) if you don't have it installed yet.
-
-### Running the Demo
-
-1. Clone this repository to your local machine.
-2. Navigate to the project directory.
-3. Execute the following command to run the demo:
-   ```bash
-   bash run.sh
-   ```
-
-### Additional Information
-
-Due to the double-blind policy, comments within the code have been omitted. However, the demonstration is structured to be straightforward and the execution command provided should seamlessly run the demo.
-
-Feel free to reach out for any inquiries or further clarifications regarding the implementation and performance of the frequency regularization technique on the UNet model.
-
-## Current and Future Plans
-
-| Milestones                  | Status        |
-|-----------------------------|---------------|
-| Initial U-net Model        | ✔️ Completed   |
-| Additional Model Releases  | 🔜 Upcoming   |
-| Example Training Code      | 🔜 Upcoming   |
-| Pip Repository Creation    | ✔️ Completed   |
-
-
-## Current Progress
-The initial model utilizing the U-net architecture has been developed and rigorously validated. This model serves as a compelling testament to the power of Frequency Regularization to markedly diminish model size without sacrificing performance integrity. 
-
-## Upcoming Releases
-Future efforts will focus on disseminating a variety of models with accompanying training code to elucidate the breadth and potential of Frequency Regularization. These models will span multiple architectures and datasets, affirming the method's generalizability and strength.
-
-## Pip Repository
-We have accomplished the development of a pip repository for our Frequency Regularization technique. You can now integrate Frequency Regularization into your projects by simply running `pip install frereg`. This step is instrumental in simplifying the deployment of condensed yet potent models in pragmatic applications.
-
-# Installation and Running the Demo With the Pip Repository
-
-With the newly created pip repository, installation and execution have become more streamlined. Please ensure you have completed the following steps to use the Frequency Regularization technique with your UNet models:
-
-### Installation via Pip Repository
-
-You can install the Frequency Regularization package by executing the following command in your environment:
-
-```bash
-pip install frereg
+```text
+frereg/                         Frequency-regularized PyTorch layers
+run/
+  detect_UNetFR.py              Pretrained UNet inference demo
+  dice_score.py                 Dice metric and loss helpers
+  unet/                         UNet architecture used by the demo
+  unet_fr.tar.xz                Compressed sparse checkpoint
+  testimgs/                     Demo input images and masks
+tests/                          Regression and shape tests
 ```
 
-This command will install the necessary components to apply Frequency Regularization to your convolutional neural network models.
+The checkpoint archive expands to `run/unet_fr.pt`. That extracted file is a
+generated artifact and is ignored by Git.
 
+## Installation
 
-# Citation
+The package can be installed directly from this repository:
 
-If you find our Frequency Regularization technique intriguing or utilize it in your research, we kindly encourage you to cite our paper:
+```bash
+python -m pip install .
+```
+
+For editable development installation:
+
+```bash
+python -m pip install -e .
+```
+
+The package metadata supports Python 3.8 through 3.11.
+
+The package requires PyTorch, NumPy, ImageIO, and Matplotlib. A CUDA-enabled
+PyTorch installation is optional; the demo automatically uses CUDA when it is
+available and otherwise runs on the CPU.
+
+## Run the demo
+
+From the repository root, run:
+
+```bash
+bash run/run.sh
+```
+
+The script locates its own directory, extracts the bundled checkpoint, loads
+the sample images, prints the number of non-zero weights and biases, reports
+the average Dice score, and displays the predictions. It can also be started
+from inside the `run/` directory with:
+
+```bash
+bash run.sh
+```
+
+## Use the layers
+
+`Conv2d` and `ConvTranspose2d` have the same call style as their PyTorch
+counterparts while keeping their trainable kernels in the frequency domain:
+
+```python
+import torch
+import frereg
+
+layer = frereg.Conv2d(3, 16, kernel_size=3, padding=1)
+output = layer(torch.randn(1, 3, 32, 32))
+```
+
+The original public helper names, pruning metadata, and UNet state-dictionary
+layout are retained so that existing training code and the released checkpoint
+continue to work.
+
+## Tests
+
+With PyTorch and pytest installed:
+
+```bash
+pytest -q
+```
+
+## Citation
 
 ```bibtex
 @ARTICLE{10266314,
@@ -68,14 +98,9 @@ If you find our Frequency Regularization technique intriguing or utilize it in y
   title={Frequency Regularization: Reducing Information Redundancy in Convolutional Neural Networks},
   year={2023},
   volume={11},
-  number={},
   pages={106793-106802},
   doi={10.1109/ACCESS.2023.3320642}
 }
 ```
 
-The paper is published in IEEE Access, and you can access it [here](https://ieeexplore.ieee.org/abstract/document/10266314).
-
-Title: [Frequency Regularization: Reducing Information Redundancy in Convolutional Neural Networks](https://ieeexplore.ieee.org/abstract/document/10266314)
-
-Your acknowledgment greatly supports our ongoing research and contributes to fostering advancements in network compression techniques.
+Paper: [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10266314)
